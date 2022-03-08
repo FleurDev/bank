@@ -18,7 +18,7 @@ public class AccountTest {
 	}
 	
 	@Test
-	public void should_success_deposit_50()
+	public void should_success_deposit_50() throws InvalidBankTransactionException
 	{
         long amount = 50L;
         account.deposit(new Amount(amount));

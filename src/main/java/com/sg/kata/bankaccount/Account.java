@@ -4,7 +4,10 @@ public class Account {
 	
 	Balance balance = new Balance(0L);
 
-	public void deposit(final Amount amount) {
+	public void deposit(final Amount amount) throws InvalidBankTransactionException {
+		if(amount.getAmount() < 0) {
+			throw new InvalidBankTransactionException("Invalid Deposit Amount!");
+		}
 		balance = balance.update(OperationType.DEPOSIT, amount);
 	}
 	
