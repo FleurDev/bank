@@ -7,9 +7,8 @@ public class Amount {
 	public Amount(long amount) {
 		this.amount = amount;
 	}
-	
-	
-	
-	
 
+	public long getAmount() {
+		return amount;
+	}
 }

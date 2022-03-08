@@ -11,7 +11,6 @@ import org.mockito.junit.MockitoJUnitRunner;
 public class AccountTest {
 	
 	private Account account;
-	
 
 	@Before
 	public void init() {
