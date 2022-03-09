@@ -11,7 +11,10 @@ public class Account {
 		balance = balance.update(OperationType.DEPOSIT, amount);
 	}
 
-	public void withdraw(Amount amount) {
+	public void withdraw(final Amount amount) throws InsufficientBalanceException {
+		if(this.balance.getBalanceAfterOperation() - amount.getAmount() < 0) {
+			throw new InsufficientBalanceException("Insufficient Balance!");
+		}
 		balance = balance.update(OperationType.WITHDRAWAL, amount);
 	}
 	

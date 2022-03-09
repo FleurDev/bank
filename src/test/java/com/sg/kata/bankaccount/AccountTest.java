@@ -37,7 +37,7 @@ public class AccountTest {
 	
 	@Test
     public void should_success_withdraw_of_100() 
-    		throws InvalidBankTransactionException {
+    		throws InvalidBankTransactionException, InsufficientBalanceException {
     	
     	account.deposit(new Amount(100L));
     	account.deposit(new Amount(300L));

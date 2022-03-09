@@ -35,4 +35,8 @@ public class Balance {
 		Balance other = (Balance) obj;
 		return balanceAfterOperation == other.balanceAfterOperation;
 	}
+
+	public long getBalanceAfterOperation() {
+		return balanceAfterOperation;
+	}
 }
