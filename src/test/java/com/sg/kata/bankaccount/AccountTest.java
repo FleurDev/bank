@@ -20,9 +20,9 @@ public class AccountTest {
 	@Test
 	public void should_success_deposit_50() throws InvalidBankTransactionException
 	{
-        long amount = 50L;
+        final long amount = 50L;
         account.deposit(new Amount(amount));
-        Balance expectedBalance = new Balance(50L);
+        final Balance expectedBalance = new Balance(50L);
         assertEquals(expectedBalance, account.getBalance());
     }
 	
@@ -30,8 +30,19 @@ public class AccountTest {
 	public void should_throw_exception_when_invalid_bank_transaction() 
 			throws InvalidBankTransactionException 
 	{
-		long amount = -50L;
+		final long amount = -50L;
         account.deposit(new Amount(amount));
         Assert.fail();
+    }
+	
+	@Test
+    public void should_success_withdraw_of_100() 
+    		throws InvalidBankTransactionException {
+    	
+    	account.deposit(new Amount(100L));
+    	account.deposit(new Amount(300L));
+    	account.withdraw(new Amount(100L));
+    	final Balance expectedBalance = new Balance(300L);
+    	assertEquals(expectedBalance, account.getBalance());
     }
 }
