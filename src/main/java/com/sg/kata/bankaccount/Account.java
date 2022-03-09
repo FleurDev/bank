@@ -21,4 +21,8 @@ public class Account {
 	public Balance getBalance() {
 		return balance;
 	}
+
+	public void printTransactionHistory(final TransactionPrinter transactionPrinter) {
+		
+	}
 }
