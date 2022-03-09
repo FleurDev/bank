@@ -15,4 +15,8 @@ public class TransactionHistory {
 	{
 		this.transactions.add(new Transaction(operationType, date, amount, balance));
 	}
+
+	public void getTransactionHistoryDetail(final TransactionPrinter transactionPrinter) {
+		transactions.stream().forEach(transaction -> transactionPrinter.print(transaction));
+	}
 }
