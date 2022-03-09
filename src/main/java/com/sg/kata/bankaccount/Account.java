@@ -12,7 +12,7 @@ public class Account {
 	}
 
 	public void withdraw(Amount amount) {
-		
+		balance = balance.update(OperationType.WITHDRAWAL, amount);
 	}
 	
 	public Balance getBalance() {
