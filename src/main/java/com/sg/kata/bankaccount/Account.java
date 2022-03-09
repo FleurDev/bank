@@ -1,14 +1,19 @@
 package com.sg.kata.bankaccount;
 
+import java.time.LocalDateTime;
+
 public class Account {
 	
-	Balance balance = new Balance(0L);
+	private TransactionHistory transactionHistory = new TransactionHistory();
+	private Balance balance = new Balance(0L);
 
 	public void deposit(final Amount amount) throws InvalidBankTransactionException {
 		if(amount.getAmount() < 0) {
 			throw new InvalidBankTransactionException("Invalid Deposit Amount!");
 		}
 		balance = balance.update(OperationType.DEPOSIT, amount);
+		transactionHistory.addTransaction(OperationType.DEPOSIT, LocalDateTime.now(), amount, balance);
+		
 	}
 
 	public void withdraw(final Amount amount) throws InsufficientBalanceException {
@@ -16,6 +21,7 @@ public class Account {
 			throw new InsufficientBalanceException("Insufficient Balance!");
 		}
 		balance = balance.update(OperationType.WITHDRAWAL, amount);
+		transactionHistory.addTransaction(OperationType.WITHDRAWAL, LocalDateTime.now(), amount, balance);
 	}
 	
 	public Balance getBalance() {
