@@ -45,4 +45,14 @@ public class AccountTest {
     	final Balance expectedBalance = new Balance(300L);
     	assertEquals(expectedBalance, account.getBalance());
     }
+	
+	@Test(expected = InsufficientBalanceException.class)
+    public void should_throw_exception_when_insufficient_balance() 
+    		throws InvalidBankTransactionException, InsufficientBalanceException {
+    	
+    	account.deposit(new Amount(100L));
+    	account.deposit(new Amount(300L));
+    	account.withdraw(new Amount(500L));
+    	Assert.fail();
+    }
 }
